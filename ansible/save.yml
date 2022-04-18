@@ -1,0 +1,34 @@
+- hosts: save
+  become: yes
+  tasks:
+    - name: Create backup folder
+      file:
+        path: /backup/images
+        state: directory
+        owner: root
+        recurse: yes
+
+    - name: Save Jenkins image in .tar
+      shell: docker save -o jenkins.tar jenkins
+      args: 
+        chdir: /backup/images
+
+    - name: Save Grafana image in .tar
+      shell: docker save -o grafana.tar grafana/grafana:8.4.4
+      args: 
+        chdir: /backup/images
+
+    - name: Save Prometheus image in .tar
+      shell: docker save -o prometheus.tar prom/prometheus:v2.34.0
+      args: 
+        chdir: /backup/images
+
+    - name: Save Loki image in .tar
+      shell: docker save -o loki.tar grafana/loki:2.4.1
+      args: 
+        chdir: /backup/images
+
+    - name: Save Promtail image in .tar
+      shell: docker save -o promtail.tar grafana/promtail:2.4.1
+      args: 
+        chdir: /backup/images
