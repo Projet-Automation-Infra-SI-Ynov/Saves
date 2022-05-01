@@ -8,4 +8,4 @@
       shell: sshpass -p "PASSWORD" scp -r /home/administrateur/grafana USER@IP_BACKUP_SERVER:/backups/volumes
 
     - name: Save backup images to backup server
-      shell: sshpass -p "PASSWORD" scp -r /backup USER@IP_BACKUP_SERVER:/backups/images
+      shell: sshpass -p "PASSWORD" scp -r /backup/images USER@IP_BACKUP_SERVER:/backups
