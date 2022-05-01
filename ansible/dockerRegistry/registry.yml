@@ -2,4 +2,4 @@
   become: yes
   tasks:
     - name: Save registry folder to backup server
-      shell: sshpass -p "PASSWORD" scp -r /home/administrateur/registry USER@IP_BACKUP_SERVER:/backups/volumes
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/registry USER@IP_BACKUP_SERVER:/backups/volumes
