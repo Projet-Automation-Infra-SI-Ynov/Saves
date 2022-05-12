@@ -1,0 +1,14 @@
+- hosts: logs
+  become: yes
+  tasks:
+    - name: Save graylog folder to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/graylog USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save nginx folder to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/nginx USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save graylog volumes to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /var/lib/docker/volumes USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save backup images to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /backup/images USER@IP_BACKUP_SERVER:/backups

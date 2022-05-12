@@ -3,3 +3,6 @@
   tasks:
     - name: Save registry folder to backup server
       shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/registry USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save bitwarden folder to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/bitwarden USER@IP_BACKUP_SERVER:/backups/volumes
