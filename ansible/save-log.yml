@@ -1,0 +1,29 @@
+- hosts: save-log
+  become: yes
+  tasks:
+    - name: Create backup folder
+      file:
+        path: /backup/images
+        state: directory
+        owner: root
+        recurse: yes
+
+    - name: Save Mongo image in .tar
+      shell: docker save -o mongo.tar mongo:4.2
+      args: 
+        chdir: /backup/images
+
+    - name: Save ELK image in .tar
+      shell: docker save -o elasticsearch.tar docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+      args: 
+        chdir: /backup/images
+
+    - name: Save Graylog image in .tar
+      shell: docker save -o graylog.tar graylog/graylog:4.2
+      args: 
+        chdir: /backup/images
+
+    # - name: Save Nginx image in .tar
+    #   shell: docker save -o nginx.tar nginx:1.21.6
+    #   args: 
+    #     chdir: /backup/images

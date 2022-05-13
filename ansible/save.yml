@@ -22,16 +22,6 @@
       shell: docker save -o prometheus.tar prom/prometheus:v2.34.0
       args: 
         chdir: /backup/images
-
-    - name: Save Loki image in .tar
-      shell: docker save -o loki.tar grafana/loki:2.4.1
-      args: 
-        chdir: /backup/images
-
-    - name: Save Promtail image in .tar
-      shell: docker save -o promtail.tar grafana/promtail:2.4.1
-      args: 
-        chdir: /backup/images
     
     - name: Save Node Exporter image in .tar
       shell: docker save -o node_exporter.tar quay.io/prometheus/node-exporter:latest
