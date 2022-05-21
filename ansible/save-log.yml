@@ -23,7 +23,7 @@
       args: 
         chdir: /backup/images
 
-    # - name: Save Nginx image in .tar
-    #   shell: docker save -o nginx.tar nginx:1.21.6
-    #   args: 
-    #     chdir: /backup/images
+    - name: Save Nginx image in .tar
+      shell: docker save -o nginx.tar nginx:1.21.6
+      args: 
+        chdir: /backup/images
