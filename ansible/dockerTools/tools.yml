@@ -1,0 +1,11 @@
+- hosts: tools
+  become: yes
+  tasks:
+    - name: Save jenkins folder to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/jenkins USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save grafana folder to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /home/administrateur/grafana USER@IP_BACKUP_SERVER:/backups/volumes
+
+    - name: Save backup images to backup server
+      shell: sshpass -p "PASSWORD" scp -r -o "StrictHostKeyChecking no" /backup/images USER@IP_BACKUP_SERVER:/backups
